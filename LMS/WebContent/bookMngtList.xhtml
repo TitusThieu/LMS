@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core">
+	
+<h:head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+    <h:outputStylesheet library="css" name="bootstrap.min.css" />     
+    <title>Library Management System</title>
+    <style type="text/css">
+        .tableUpdated {
+        	width: 90% !important;
+        	margin: 17px 58px 0 !important;
+        }
+        .btnSpace {
+        	margin: 17px;
+        }     
+    </style>
+</h:head>
+<h:body>
+    <center><h2><h:outputText value="Management Of Borrowing Books"/></h2></center>
+    <h:form id="bookMngtForm">
+        <h:dataTable id="bookMngtTable" binding="#{table}" value="#{bookMngtBean.bookMngtList()}" var="bookMngt" class="table table-striped table-hover table-bordered tableUpdated">
+            <h:column>
+                <f:facet name="header">Reader Id</f:facet>
+                <h:outputText value="#{bookMngt.readerId}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Book Id</f:facet>
+                <h:outputText value="#{bookMngt.bookId}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Quantity</f:facet>
+                <h:outputText value="#{bookMngt.quantity}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Status</f:facet>
+                <h:outputText value="#{bookMngt.status}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Date of borrowing</f:facet>
+                <h:outputText value="#{bookMngt.borrowDate}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Update</f:facet>
+                <h:commandButton action="#{bookMngtBean.editBookMngtRecord(bookMngt.readerId, bookMngt.bookId )}" value="Update" class="btn btn-primary" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Delete</f:facet>
+                <h:commandButton action="#{bookMngtBean.deleteBookMngtRecord(bookMngt.readerId, bookMngt.bookId)}" value="Delete" class="btn btn-danger" />
+            </h:column>
+        </h:dataTable>
+        <center>
+            <h:commandButton action="createBookMngt.xhtml?faces-redirect=true" value="Create New Book Management Record" class="btn btn-success btnSpace" />
+        </center>
+    </h:form>
+</h:body>
+</html>

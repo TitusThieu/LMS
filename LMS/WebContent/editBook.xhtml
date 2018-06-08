@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+    <h:outputStylesheet library="css" name="bootstrap.min.css" />
+    <title>Library Management System</title>
+    <style type="text/css">
+        .updateBtnStyle {
+        	width: 80px !important;        	
+        }
+    </style>
+</h:head>
+<h:body>
+        <h:form id="form" class="form-horizontal">
+            <div class="form-group">
+                <div class="col-sm-2"></div>
+                <h2 style="text-align: center" class="col-sm-4">Edit Book Record</h2>
+            </div>
+            <hr/>
+            <div class="form-group">
+                <h:outputLabel for="bookName" class="control-label col-sm-2">Book Name:</h:outputLabel>
+                <div class="col-sm-4">
+                    <h:inputText id="name-id" value="#{editRecordObj.bookName}" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <h:outputLabel for="author" class="control-label col-sm-2">Author:</h:outputLabel>
+                <div class="col-sm-4">
+                    <h:inputText id="author-id" value="#{editRecordObj.author}" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <h:outputLabel for="major" class="control-label col-sm-2">Major:</h:outputLabel>
+                <div class="col-sm-4">
+                    <h:selectOneMenu id="major-id" value="#{editRecordObj.major}" class="form-control">
+                    <f:selectItem itemValue = "Natural Science" itemLabel = "Natural Science"/>
+                    <f:selectItem itemValue = "Literature - Art" itemLabel = "Literature - Art"/>
+                    <f:selectItem itemValue = "Electronics and Telecommunication" itemLabel = "Electronics and Telecommunication"/>
+                    <f:selectItem itemValue = "Information Technology" itemLabel = "Information Technology"/>
+                    </h:selectOneMenu>
+                </div>
+            </div>
+            <div class="form-group">
+                <h:outputLabel for="year" class="control-label col-sm-2">Year:</h:outputLabel>
+                <div class="col-sm-4">
+                    <h:inputText id="year-id" value="#{editRecordObj.year}" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <h:outputLabel for="quantity" class="control-label col-sm-2">Quantity:</h:outputLabel>
+                <div class="col-sm-4">
+                    <h:inputText id="quantity-id" value="#{editRecordObj.quantity}" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-4">
+                    <h:commandButton value="Update" action="#{bookBean.updateBookDetails(editRecordObj)}" class="btn btn-primary updateBtnStyle" />
+                </div>
+            </div>
+        </h:form>
+    </h:body>
+</html>

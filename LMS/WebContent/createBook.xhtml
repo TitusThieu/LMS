@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+    <h:outputStylesheet library="css" name="bootstrap.min.css" />
+    <title>Library Management System</title>
+    <style type="text/css">
+        .btnWidth {
+            width: 80px;
+        }    
+        .error {
+			color: red;
+			font-weight: bold; 
+		}
+    </style>
+</h:head>
+<h:body>
+	<f:view>
+    <h:form id="createBookForm" class="form-horizontal">
+        <div class="form-group">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <h2>Create Book Record</h2>
+            </div>
+        </div>
+        <hr/>
+        <div class="form-group">
+            <h:outputLabel class="control-label col-sm-4">Book Name:</h:outputLabel>
+            <div class="col-sm-4">
+                <h:inputText id="name-id" value="#{bookBean.bookName}" class="form-control" required="true"
+                			requiredMessage="You must enter a book name"/>
+                <h:message for="name-id" styleClass="error"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <h:outputLabel class="control-label col-sm-4">Author:</h:outputLabel>
+            <div class="col-sm-4">
+                <h:inputText id="author-id" value="#{bookBean.author}" class="form-control" required="true"
+                			requiredMessage="You must enter a author"/>
+                <h:message for="author-id" styleClass="error"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <h:outputLabel for="major" class="control-label col-sm-4">Major:</h:outputLabel>
+            <div class="col-sm-4">
+                <h:selectOneMenu id="major-id" value="#{bookBean.major}" class="form-control" validatorMessage="Major is required">
+                    <f:selectItem itemValue = "Natural Science" itemLabel = "Natural Science"/>
+                    <f:selectItem itemValue = "Literature - Art" itemLabel = "Literature - Art"/>
+                    <f:selectItem itemValue = "Electronics and Telecommunication" itemLabel = "Electronics and Telecommunication"/>
+                    <f:selectItem itemValue = "Information Technology" itemLabel = "Information Technology"/>
+                </h:selectOneMenu>
+            </div>
+        </div>
+        <div class="form-group">
+            <h:outputLabel class="control-label col-sm-4">Year:</h:outputLabel>
+            <div class="col-sm-4">
+                <h:inputText id="year-id" value="#{bookBean.year}" cols="50" rows="5" class="form-control" required="true"
+                			 requiredMessage="You must enter a year"
+                			 converterMessage="Year must be a number"/>
+                <h:message for="year-id" styleClass="error"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <h:outputLabel class="control-label col-sm-4">Quantity:</h:outputLabel>
+            <div class="col-sm-4">
+                <h:inputText id="quantity-id" value="#{bookBean.quantity}" cols="50" rows="5" class="form-control" required="true"
+                	         requiredMessage="You must enter a quantity"
+                	         converterMessage="Quantity must be a number"/>
+                 <h:message for="quantity-id" styleClass="error"/>	         
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <div class="col-sm-2">
+                    <h:commandButton value="Save" action="#{bookBean.saveBookDetails(bookBean)}" class="btn btn-success btnWidth" />
+                </div>
+                <div class="col-sm-1">
+                </div>
+                <div class="col-sm-2">
+                    <h:link outcome="booksList" value="View Books Record List" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </h:form>
+    </f:view>
+</h:body>
+</html>

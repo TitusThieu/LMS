@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+    <h:outputStylesheet library="css" name="bootstrap.min.css" />
+    <title>Management of borrowing books </title>
+    <style type="text/css">
+        .btnWidth {
+            width: 80px;
+        }   
+        .error {
+			color: red;
+			font-weight: bold;
+}  
+    </style>
+</h:head>
+<h:body>
+<f:view>
+    <h:form id="createBookMngtForm" class="form-horizontal">
+        <div class="form-group">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <h2>Create Book Management Record</h2>
+            </div>
+        </div>
+        <hr/>
+        <div class="form-group">
+            <h:outputLabel for="readerId" class="control-label col-sm-4">Reader Name:</h:outputLabel>
+            <div class="col-sm-4">
+                <h:selectOneMenu id="readerId" value="#{bookMngtBean.readerId}" class="form-control"
+                                 validator="#{bookMngtBean.validateQuantitySum}">
+                	<f:selectItems value="#{bookMngtBean.readersListFromDB}" var ="reader"
+                	 itemValue = "#{reader.readerId}" itemLabel = "#{reader.readerName}"/>
+                 </h:selectOneMenu>
+                <h:message for="readerId" styleClass="error"/>
+              </div>  			
+        </div>
+        <div class="form-group">
+            <h:outputLabel for="bookId" class="control-label col-sm-4">Book Name:</h:outputLabel>
+            <div class="col-sm-4">
+                <h:selectOneMenu id="bookId" value="#{bookMngtBean.bookId}" class="form-control">
+                	<f:selectItems value="#{bookMngtBean.booksListFromDB}" var="book"
+                	itemValue = "#{book.bookId}" itemLabel = "#{book.bookName}"/> 
+                </h:selectOneMenu>    
+            </div>
+        </div>
+        <div class="form-group">
+            <h:outputLabel for="bookQuantity" class="control-label col-sm-4">Quantity:</h:outputLabel>
+            <div class="col-sm-4">
+                <h:inputText id="quantity-id" value="#{bookMngtBean.quantity}" cols="50" rows="5" class="form-control" required="true"
+                			 requiredMessage="You must enter a quantity"
+                			 converterMessage="Quantity must be a number"
+                			 validator="#{bookMngtBean.validateQuantity}"/>
+                <h:message for="quantity-id" styleClass="error"/>			 
+            </div>
+        </div>
+        <div class="form-group">
+            <h:outputLabel for="status" class="control-label col-sm-4">Status:</h:outputLabel>
+            <div class="col-sm-4">
+                <h:selectOneRadio id="status-id" value="#{bookMngtBean.status}" >
+                    <f:selectItem itemValue = "New 100%" itemLabel = "New 100% "/> 
+                    <f:selectItem itemValue = "Like New 99%" itemLabel = "Like New 99% "/> 
+                    <f:selectItem itemValue = "Old" itemLabel = "Old"/>
+                    
+				</h:selectOneRadio>
+            </div>
+        </div>
+        <div class="form-group">
+            <h:outputLabel for="borrowDate" class="control-label col-sm-4">Date of borrowing:</h:outputLabel>
+            <div class="col-sm-4">
+                <h:inputText id="borrowDate-id" value="#{bookMngtBean.borrowDate}" cols="50" rows="5" class="form-control" required ="true"
+                			 requiredMessage="You must enter the date of borrowing"/>
+                   <h:message for="borrowDate-id" styleClass="error"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <div class="col-sm-2">
+                    <h:commandButton value="Save" action="#{bookMngtBean.saveBookMngtDetails(bookMngtBean)}" class="btn btn-success btnWidth" />
+                </div>
+                <div class="col-sm-1">
+                </div>
+                <div class="col-sm-2">
+                    <h:link outcome="bookMngtList" value="View Management Of Borrowing Books" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+        
+    </h:form>
+    </f:view>
+</h:body>
+</html>

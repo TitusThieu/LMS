@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+    <h:outputStylesheet library="css" name="bootstrap.min.css" />
+    <title>Library Management System</title>
+    <style type="text/css">
+        .updateBtnStyle {
+        	width: 80px !important;        	
+        }
+    </style>
+</h:head>
+<h:body>
+        <h:form id="form" class="form-horizontal">
+            <div class="form-group">
+                <div class="col-sm-2"></div>
+                <h2 style="text-align: center" class="col-sm-4">Edit Book Management Record</h2>
+            </div>
+            <hr/>
+            <div class="form-group">
+                <h:outputLabel for="readerId" class="control-label col-sm-2">Reader Id:</h:outputLabel>
+                <div class="col-sm-4">
+                    <h:inputText id="reader-id" value="#{editRecordObj.readerId}" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <h:outputLabel for="bookId" class="control-label col-sm-2">Book Id:</h:outputLabel>
+                <div class="col-sm-4">
+                    <h:inputText id="book-id" value="#{editRecordObj.bookId}" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <h:outputLabel for="quantity" class="control-label col-sm-2">Quantity:</h:outputLabel>
+                <div class="col-sm-4">
+                    <h:inputText id="quantity-id" value="#{editRecordObj.quantity}" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <h:outputLabel for="status" class="control-label col-sm-2">Status:</h:outputLabel>
+                <div class="col-sm-4">
+                    <h:inputText id="status-id" value="#{editRecordObj.status}" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <h:outputLabel for="borrowDate" class="control-label col-sm-2">Date of borrowing:</h:outputLabel>
+                <div class="col-sm-4">
+                    <h:inputText id="borrowDate-id" value="#{editRecordObj.borrowDate}" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-4">
+                    <h:commandButton value="Update" action="#{bookMngtBean.updateBookMngtDetails(editRecordObj)}" class="btn btn-primary updateBtnStyle" />
+                </div>
+            </div>
+        </h:form>
+    </h:body>
+</html>
